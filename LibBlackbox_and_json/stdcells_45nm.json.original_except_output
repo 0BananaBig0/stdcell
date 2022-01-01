@@ -1,0 +1,1696 @@
+{
+    "version": "0.3",
+    "std_cells": [
+      {
+        "name": ["PLL"],
+        "signals": {
+          "input":["BYPASS","DIVF0","DIVF1","DIVF2","DIVF3","DIVF4","DIVF5","DIVF6","DIVF7","DIVQ0","DIVQ1","DIVQ2","DIVR0","DIVR1","DIVR2","DIVR3","DIVR4","DIVR5","FB","FSE","RANGE0","RANGE1","RANGE2","REF","RESET"],
+          "output":["LOCK","PLLOUT"],
+          "wire":[]
+        },
+        "sim_primitives":[]
+      },
+
+
+
+      {
+        "name": ["PADBID"],
+        "signals": {
+          "input":["I","OEN","PAD"],
+          "output":["PAD","C"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"TSL",
+            "connection":["PAD","I","OEN"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["C","PAD"]
+          }
+        ]
+      },
+
+      {
+        "name": ["PADCLK"],
+        "signals": {
+          "input":["PAD"],
+          "output":["C"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["C","PAD"]
+          }
+        ]
+      },
+
+
+
+      {
+        "name": ["AON_BUF_X1","AON_BUF_X2","AON_BUF_X4"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AON_INV_X1","AON_INV_X2","AON_INV_X4"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["HEADER_OE_X1","HEADER_OE_X2","HEADER_OE_X4"],
+        "signals": {
+          "input":["SLEEP"],
+          "output":["SLEEPOUT"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["SLEEPOUT","SLEEP"]
+          }
+        ]
+      },
+
+      {
+        "name": ["HEADER_X1","HEADER_X2","HEADER_X4"],
+        "signals": {
+          "input":["SLEEP"],
+          "output":[],
+          "wire":[]
+        },
+        "sim_primitives":[
+        ]
+      },
+
+      {
+        "name": ["ISO_FENCE0N_X1","ISO_FENCE0N_X2","ISO_FENCE0N_X4"],
+        "signals": {
+          "input":["A","EN"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["Z","A","EN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["ISO_FENCE0_X1","ISO_FENCE0_X2","ISO_FENCE0_X4"],
+        "signals": {
+          "input":["A","EN"],
+          "output":["Z"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_0","A","EN"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["Z","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["ISO_FENCE1N_X1","ISO_FENCE1N_X2","ISO_FENCE1N_X4"],
+        "signals": {
+          "input":["A","EN"],
+          "output":["Z"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_0","A","EN"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["Z","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["ISO_FENCE1_X1","ISO_FENCE1_X2","ISO_FENCE1_X4"],
+        "signals": {
+          "input":["A","EN"],
+          "output":["Z"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["Z","A","EN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LS_HLEN_X1","LS_HLEN_X2","LS_HLEN_X4"],
+        "signals": {
+          "input":["A","ISOLN"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["Z","A","ISOLN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LS_HL_X1","LS_HL_X2","LS_HL_X4"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LS_LHEN_X1","LS_LHEN_X2","LS_LHEN_X4"],
+        "signals": {
+          "input":["A","ISOLN"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["Z","A","ISOLN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LS_LH_X1","LS_LH_X2","LS_LH_X4"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+
+
+      {
+        "name": ["MemGen_16_10"],
+        "signals": {
+          "input":["chip_en","wr_en","addr[9:0]","wr_data[15:0]","clock","rd_en"],
+          "output":["rd_data[15:0]"],
+          "wire":[]
+        },
+        "sim_primitives":[
+        ]
+      },
+
+
+
+      {
+        "name": ["AND2_X1","AND2_X2","AND2_X4","AND2_X1_LVT","AND2_X2_LVT","AND2_X4_LVT","AND2_X1_SVT","AND2_X2_SVT","AND2_X4_SVT","AND2_X1_HVT","AND2_X2_HVT","AND2_X4_HVT"],
+        "signals": {
+          "input":["A1","A2"],
+          "output":["ZN"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["ZN","A1","A2"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AND3_X1","AND3_X2","AND3_X4","AND3_X1_LVT","AND3_X2_LVT","AND3_X4_LVT","AND3_X1_SVT","AND3_X2_SVT","AND3_X4_SVT","AND3_X1_HVT","AND3_X2_HVT","AND3_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_0","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["ZN","net_0","A3"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AND4_X1","AND4_X2","AND4_X4","AND4_X1_LVT","AND4_X2_LVT","AND4_X4_LVT","AND4_X1_SVT","AND4_X2_SVT","AND4_X4_SVT","AND4_X1_HVT","AND4_X2_HVT","AND4_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3","A4"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","A3"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["ZN","net_0","A4"]
+          }
+        ]
+      },
+
+      {
+        "name": ["ANTENNA_X1","ANTENNA_X1_LVT","ANTENNA_X1_SVT","ANTENNA_X1_HVT"],
+        "signals": {
+          "input":["A"],
+          "output":[],
+          "wire":[]
+        },
+        "sim_primitives":[
+        ]
+      },
+
+      {
+        "name": ["AOI211_X1","AOI211_X2","AOI211_X1_LVT","AOI211_X2_LVT","AOI211_X1_SVT","AOI211_X2_SVT","AOI211_X1_HVT","AOI211_X2_HVT"],
+        "signals": {
+          "input":["A","B","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_2","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","B"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","A"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI211_X4","AOI211_X4_LVT","AOI211_X4_SVT","AOI211_X4_HVT"],
+        "signals": {
+          "input":["A","B","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_4","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_3","net_4","B"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","net_3","A"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI21_X1","AOI21_X2","AOI21_X4","AOI21_X1_LVT","AOI21_X2_LVT","AOI21_X4_LVT","AOI21_X1_SVT","AOI21_X2_SVT","AOI21_X4_SVT","AOI21_X1_HVT","AOI21_X2_HVT","AOI21_X4_HVT"],
+        "signals": {
+          "input":["A","B1","B2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_1","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","A","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI221_X1","AOI221_X2","AOI221_X1_LVT","AOI221_X2_LVT","AOI221_X1_SVT","AOI221_X2_SVT","AOI221_X1_HVT","AOI221_X2_HVT"],
+        "signals": {
+          "input":["A","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_3","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","A"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","net_3"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI221_X4","AOI221_X4_LVT","AOI221_X4_SVT","AOI221_X4_HVT"],
+        "signals": {
+          "input":["A","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4","net_5"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_5","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_4","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_3","net_4","A"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","net_3","net_5"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI222_X1","AOI222_X2","AOI222_X1_LVT","AOI222_X2_LVT","AOI222_X1_SVT","AOI222_X2_SVT","AOI222_X1_HVT","AOI222_X2_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_4","C1","C2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","net_3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","net_4"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI222_X4","AOI222_X4_LVT","AOI222_X4_SVT","AOI222_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4","net_5","net_6"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_6","C1","C2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_5","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_4","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_3","net_4","net_5"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","net_3","net_6"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["AOI22_X1","AOI22_X2","AOI22_X4","AOI22_X1_LVT","AOI22_X2_LVT","AOI22_X4_LVT","AOI22_X1_SVT","AOI22_X2_SVT","AOI22_X4_SVT","AOI22_X1_HVT","AOI22_X2_HVT","AOI22_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_2","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["BUF_X1","BUF_X2","BUF_X4","BUF_X8","BUF_X16","BUF_X32","BUF_X1_LVT","BUF_X2_LVT","BUF_X4_LVT","BUF_X8_LVT","BUF_X16_LVT","BUF_X32_LVT","BUF_X1_SVT","BUF_X2_SVT","BUF_X4_SVT","BUF_X8_SVT","BUF_X16_SVT","BUF_X32_SVT","BUF_X1_HVT","BUF_X2_HVT","BUF_X4_HVT","BUF_X8_HVT","BUF_X16_HVT","BUF_X32_HVT"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["CLKBUF_X1","CLKBUF_X2","CLKBUF_X3","CLKBUF_X1_LVT","CLKBUF_X2_LVT","CLKBUF_X3_LVT","CLKBUF_X1_SVT","CLKBUF_X2_SVT","CLKBUF_X3_SVT","CLKBUF_X1_HVT","CLKBUF_X2_HVT","CLKBUF_X3_HVT"],
+        "signals": {
+          "input":["A"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"BUF",
+            "connection":["Z","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["CLKGATETST_X1","CLKGATETST_X2","CLKGATETST_X4","CLKGATETST_X8","CLKGATETST_X1_LVT","CLKGATETST_X2_LVT","CLKGATETST_X4_LVT","CLKGATETST_X8_LVT","CLKGATETST_X1_SVT","CLKGATETST_X2_SVT","CLKGATETST_X4_SVT","CLKGATETST_X8_SVT","CLKGATETST_X1_HVT","CLKGATETST_X2_HVT","CLKGATETST_X4_HVT","CLKGATETST_X8_HVT"],
+        "signals": {
+          "input":["CK","E","SE"],
+          "output":["GCK"],
+          "wire":["IQ","net_0","clock_net"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_0","E","SE"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["clock_net","CK"]
+          },
+          {
+            "sim_type":"DLAT",
+            "connection":["IQ","","","clock_net","net_0"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["GCK","IQ","CK"]
+          }
+        ]
+      },
+
+      {
+        "name": ["CLKGATE_X1","CLKGATE_X2","CLKGATE_X4","CLKGATE_X8","CLKGATE_X1_LVT","CLKGATE_X2_LVT","CLKGATE_X4_LVT","CLKGATE_X8_LVT","CLKGATE_X1_SVT","CLKGATE_X2_SVT","CLKGATE_X4_SVT","CLKGATE_X8_SVT","CLKGATE_X1_HVT","CLKGATE_X2_HVT","CLKGATE_X4_HVT","CLKGATE_X8_HVT"],
+        "signals": {
+          "input":["CK","E"],
+          "output":["GCK"],
+          "wire":["IQ","clock_net"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["clock_net","CK"]
+          },
+          {
+            "sim_type":"DLAT",
+            "connection":["IQ","","","clock_net","E"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["GCK","CK","IQ"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DFFRS_X1","DFFRS_X2","DFFRS_X1_LVT","DFFRS_X2_LVT","DFFRS_X1_SVT","DFFRS_X2_SVT","DFFRS_X1_HVT","DFFRS_X2_HVT"],
+        "signals": {
+          "input":["CK","D","RN","SN"],
+          "output":["Q","QN"],
+          "wire":["net_0","net_1","IQ","IQN"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","RN"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","SN"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","net_0","net_1","CK","D"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DFFR_X1","DFFR_X2","DFFR_X1_LVT","DFFR_X2_LVT","DFFR_X1_SVT","DFFR_X2_SVT","DFFR_X1_HVT","DFFR_X2_HVT"],
+        "signals": {
+          "input":["CK","D","RN"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","RN"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","","net_0","CK","D"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DFFS_X1","DFFS_X2","DFFS_X1_LVT","DFFS_X2_LVT","DFFS_X1_SVT","DFFS_X2_SVT","DFFS_X1_HVT","DFFS_X2_HVT"],
+        "signals": {
+          "input":["CK","D","SN"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","SN"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","net_0","","CK","D"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DFF_X1","DFF_X2","DFF_X1_LVT","DFF_X2_LVT","DFF_X1_SVT","DFF_X2_SVT","DFF_X1_HVT","DFF_X2_HVT"],
+        "signals": {
+          "input":["CK","D"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","","","CK","D"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DLH_X1","DLH_X2","DLH_X1_LVT","DLH_X2_LVT","DLH_X1_SVT","DLH_X2_SVT","DLH_X1_HVT","DLH_X2_HVT"],
+        "signals": {
+          "input":["D","G"],
+          "output":["Q"],
+          "wire":["IQ"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"DLAT",
+            "connection":["IQ","","","G","D"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          }
+        ]
+      },
+
+      {
+        "name": ["DLL_X1","DLL_X2","DLL_X1_LVT","DLL_X2_LVT","DLL_X1_SVT","DLL_X2_SVT","DLL_X1_HVT","DLL_X2_HVT"],
+        "signals": {
+          "input":["D","GN"],
+          "output":["Q"],
+          "wire":["IQ","net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","GN"]
+          },
+          {
+            "sim_type":"DLAT",
+            "connection":["IQ","","","net_0","D"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          }
+        ]
+      },
+
+      {
+        "name": ["FA_X1","FA_X1_LVT","FA_X1_SVT","FA_X1_HVT"],
+        "signals": {
+          "input":["A","B","CI"],
+          "output":["CO","S"],
+          "wire":["net_0","net_1","net_2","net_3"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"XOR",
+            "connection":["net_3","A","B"]
+          },
+          {
+            "sim_type":"XOR",
+            "connection":["S","CI","net_3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","A","B"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","CI","net_2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","A","B"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["CO","net_0","net_1"]
+          }
+        ]
+      },
+
+      {
+        "name": ["FILLCELL_X1","FILLCELL_X2","FILLCELL_X4","FILLCELL_X8","FILLCELL_X16","FILLCELL_X32","FILLCELL_X1_LVT","FILLCELL_X2_LVT","FILLCELL_X4_LVT","FILLCELL_X8_LVT","FILLCELL_X16_LVT","FILLCELL_X32_LVT","FILLCELL_X1_SVT","FILLCELL_X2_SVT","FILLCELL_X4_SVT","FILLCELL_X8_SVT","FILLCELL_X16_SVT","FILLCELL_X32_SVT","FILLCELL_X1_HVT","FILLCELL_X2_HVT","FILLCELL_X4_HVT","FILLCELL_X8_HVT","FILLCELL_X16_HVT","FILLCELL_X32_HVT"],
+        "signals": {
+          "input":[],
+          "output":[],
+          "wire":[]
+        },
+        "sim_primitives":[
+        ]
+      },
+
+      {
+        "name": ["HA_X1","HA_X1_LVT","HA_X1_SVT","HA_X1_HVT"],
+        "signals": {
+          "input":["A","B"],
+          "output":["CO","S"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"XOR",
+            "connection":["S","A","B"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["CO","A","B"]
+          }
+        ]
+      },
+
+      {
+        "name": ["INV_X1","INV_X2","INV_X4","INV_X8","INV_X16","INV_X32","INV_X1_LVT","INV_X2_LVT","INV_X4_LVT","INV_X8_LVT","INV_X16_LVT","INV_X32_LVT","INV_X1_SVT","INV_X2_SVT","INV_X4_SVT","INV_X8_SVT","INV_X16_SVT","INV_X32_SVT","INV_X1_HVT","INV_X2_HVT","INV_X4_HVT","INV_X8_HVT","INV_X16_HVT","INV_X32_HVT"],
+        "signals": {
+          "input":["A"],
+          "output":["ZN"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","A"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LOGIC0_X1","LOGIC0_X1_LVT","LOGIC0_X1_SVT","LOGIC0_X1_HVT"],
+        "signals": {
+          "input":[],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"TIE0",
+            "connection":["Z"]
+          }
+        ]
+      },
+
+      {
+        "name": ["LOGIC1_X1","LOGIC1_X1_LVT","LOGIC1_X1_SVT","LOGIC1_X1_HVT"],
+        "signals": {
+          "input":[],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"TIE1",
+            "connection":["Z"]
+          }
+        ]
+      },
+
+      {
+        "name": ["MUX2_X1","MUX2_X2","MUX2_X1_LVT","MUX2_X2_LVT","MUX2_X1_SVT","MUX2_X2_SVT","MUX2_X1_HVT","MUX2_X2_HVT"],
+        "signals": {
+          "input":["A","B","S"],
+          "output":["Z"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_2","S"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","A","net_2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","S","B"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["Z","net_0","net_1"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NAND2_X1","NAND2_X2","NAND2_X4","NAND2_X1_LVT","NAND2_X2_LVT","NAND2_X4_LVT","NAND2_X1_SVT","NAND2_X2_SVT","NAND2_X4_SVT","NAND2_X1_HVT","NAND2_X2_HVT","NAND2_X4_HVT"],
+        "signals": {
+          "input":["A1","A2"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_0","A1","A2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NAND3_X1","NAND3_X2","NAND3_X4","NAND3_X1_LVT","NAND3_X2_LVT","NAND3_X4_LVT","NAND3_X1_SVT","NAND3_X2_SVT","NAND3_X4_SVT","NAND3_X1_HVT","NAND3_X2_HVT","NAND3_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","A3"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NAND4_X1","NAND4_X2","NAND4_X4","NAND4_X1_LVT","NAND4_X2_LVT","NAND4_X4_LVT","NAND4_X1_SVT","NAND4_X2_SVT","NAND4_X4_SVT","NAND4_X1_HVT","NAND4_X2_HVT","NAND4_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3","A4"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_2","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","net_2","A3"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","A4"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NOR2_X1","NOR2_X2","NOR2_X4","NOR2_X1_LVT","NOR2_X2_LVT","NOR2_X4_LVT","NOR2_X1_SVT","NOR2_X2_SVT","NOR2_X4_SVT","NOR2_X1_HVT","NOR2_X2_HVT","NOR2_X4_HVT"],
+        "signals": {
+          "input":["A1","A2"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_0","A1","A2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NOR3_X1","NOR3_X2","NOR3_X4","NOR3_X1_LVT","NOR3_X2_LVT","NOR3_X4_LVT","NOR3_X1_SVT","NOR3_X2_SVT","NOR3_X4_SVT","NOR3_X1_HVT","NOR3_X2_HVT","NOR3_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","A3"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["NOR4_X1","NOR4_X2","NOR4_X4","NOR4_X1_LVT","NOR4_X2_LVT","NOR4_X4_LVT","NOR4_X1_SVT","NOR4_X2_SVT","NOR4_X4_SVT","NOR4_X1_HVT","NOR4_X2_HVT","NOR4_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3","A4"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_2","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","A3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","A4"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI211_X1","OAI211_X2","OAI211_X4","OAI211_X1_LVT","OAI211_X2_LVT","OAI211_X4_LVT","OAI211_X1_SVT","OAI211OAI211_X2_SVT","OAI211_X4_SVT","OAI211_X1_HVT","OAI211_X2_HVT","OAI211_X4_HVT"],
+        "signals": {
+          "input":["A","B","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_2","C1","C2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","net_2","A"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","B"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI21_X1","OAI21_X2","OAI21_X4","OAI21_X1_LVT","OAI21_X2_LVT","OAI21_X4_LVT","OAI21_X1_SVT","OAI21_X2_SVT","OAI21_X4_SVT","OAI21_X1_HVT","OAI21_X2_HVT","OAI21_X4_HVT"],
+        "signals": {
+          "input":["A","B1","B2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_1","B1","B2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","A","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI221_X1","OAI221_X2","OAI221_X1_LVT","OAI221_X2_LVT","OAI221_X1_SVT","OAI221_X2_SVT","OAI221_X1_HVT","OAI221_X2_HVT"],
+        "signals": {
+          "input":["A","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_3","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","C1","C2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","net_2","A"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","net_3"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI221_X4","OAI221_X4_LVT","OAI221_X4_SVT","OAI221_X4_HVT"],
+        "signals": {
+          "input":["A","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4","net_5"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_5","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_4","C1","C2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","net_4","A"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","net_3","net_5"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI222_X1","OAI222_X2","OAI222_X1_LVT","OAI222_X2_LVT","OAI222_X1_SVT","OAI222_X2_SVT","OAI222_X1_HVT","OAI222_X2_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_4","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_3","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_1","net_2","net_3"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","net_4"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI222_X4","OAI222_X4_LVT","OAI222_X4_SVT","OAI222_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2","C1","C2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4","net_5","net_6"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_6","C1","C2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_5","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_4","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","net_4","net_5"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","net_3","net_6"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI22_X1","OAI22_X2","OAI22_X4","OAI22_X1_LVT","OAI22_X2_LVT","OAI22_X4_LVT","OAI22_X1_SVT","OAI22_X2_SVT","OAI22_X4_SVT","OAI22_X1_HVT","OAI22_X2_HVT","OAI22_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","B1","B2"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_2","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OAI33_X1","OAI33_X1_LVT","OAI33_X1_SVT","OAI33_X1_HVT"],
+        "signals": {
+          "input":["A1","A2","A3","B1","B2","B3"],
+          "output":["ZN"],
+          "wire":["net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_4","B1","B2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_3","net_4","B3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","A3"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_0","net_1","net_3"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OR2_X1","OR2_X2","OR2_X4","OR2_X1_LVT","OR2_X2_LVT","OR2_X4_LVT","OR2_X1_SVT","OR2_X2_SVT","OR2_X4_SVT","OR2_X1_HVT","OR2_X2_HVT","OR2_X4_HVT"],
+        "signals": {
+          "input":["A1","A2"],
+          "output":["ZN"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["ZN","A1","A2"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OR3_X1","OR3_X2","OR3_X4","OR3_X1_LVT","OR3_X2_LVT","OR3_X4_LVT","OR3_X1_SVT","OR3_X2_SVT","OR3_X4_SVT","OR3_X1_HVT","OR3_X2_HVT","OR3_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_0","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["ZN","net_0","A3"]
+          }
+        ]
+      },
+
+      {
+        "name": ["OR4_X1","OR4_X2","OR4_X4","OR4_X1_LVT","OR4_X2_LVT","OR4_X4_LVT","OR4_X1_SVT","OR4_X2_SVT","OR4_X4_SVT","OR4_X1_HVT","OR4_X2_HVT","OR4_X4_HVT"],
+        "signals": {
+          "input":["A1","A2","A3","A4"],
+          "output":["ZN"],
+          "wire":["net_0","net_1"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"OR",
+            "connection":["net_1","A1","A2"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","A3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["ZN","net_0","A4"]
+          }
+        ]
+      },
+
+      {
+        "name": ["SDFFRS_X1","SDFFRS_X2","SDFFRS_X1_LVT","SDFFRS_X2_LVT","SDFFRS_X1_SVT","SDFFRS_X2_SVT","SDFFRS_X1_HVT","SDFFRS_X2_HVT"],
+        "signals": {
+          "input":["CK","D","RN","SE","SI","SN"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0","net_1","net_2","net_3","net_4","net_5"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","SN"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_1","RN"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","SE","SI"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_5","SE"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_4","D","net_5"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_2","net_3","net_4"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","net_0","net_1","CK","net_2"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["SDFFR_X1","SDFFR_X2","SDFFR_X1_LVT","SDFFR_X2_LVT","SDFFR_X1_SVT","SDFFR_X2_SVT","SDFFR_X1_HVT","SDFFR_X2_HVT"],
+        "signals": {
+          "input":["CK","D","RN","SE","SI"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","RN"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","SE","SI"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_4","SE"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","D","net_4"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","net_3"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","","net_0","CK","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["SDFFS_X1","SDFFS_X2","SDFFS_X1_LVT","SDFFS_X2_LVT","SDFFS_X1_SVT","SDFFS_X2_SVT","SDFFS_X1_HVT","SDFFS_X2_HVT"],
+        "signals": {
+          "input":["CK","D","SE","SI","SN"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0","net_1","net_2","net_3","net_4"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","SN"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","SE","SI"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_4","SE"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_3","D","net_4"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_1","net_2","net_3"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","net_0","","CK","net_1"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["SDFF_X1","SDFF_X2","SDFF_X1_LVT","SDFF_X2_LVT","SDFF_X1_SVT","SDFF_X2_SVT","SDFF_X1_HVT","SDFF_X2_HVT"],
+        "signals": {
+          "input":["CK","D","SE","SI"],
+          "output":["Q","QN"],
+          "wire":["IQ","IQN","net_0","net_1","net_2","net_3"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"AND",
+            "connection":["net_1","SE","SI"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["net_3","SE"]
+          },
+          {
+            "sim_type":"AND",
+            "connection":["net_2","D","net_3"]
+          },
+          {
+            "sim_type":"OR",
+            "connection":["net_0","net_1","net_2"]
+          },
+          {
+            "sim_type":"DFF",
+            "connection":["IQ","","","CK","net_0"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["IQN","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["Q","IQ"]
+          },
+          {
+            "sim_type":"BUF",
+            "connection":["QN","IQN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["TBUF_X1","TBUF_X2","TBUF_X4","TBUF_X8","TBUF_X16","TBUF_X1_LVT","TBUF_X2_LVT","TBUF_X4_LVT","TBUF_X8_LVT","TBUF_X16_LVT","TBUF_X1_SVT","TBUF_X2_SVT","TBUF_X4_SVT","TBUF_X8_SVT","TBUF_X16_SVT","TBUF_X1_HVT","TBUF_X2_HVT","TBUF_X4_HVT","TBUF_X8_HVT","TBUF_X16_HVT"],
+        "signals": {
+          "input":["A","EN"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"TSL",
+            "connection":["Z","A","EN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["TINV_X1","TINV_X1_LVT","TINV_X1_SVT","TINV_X1_HVT"],
+        "signals": {
+          "input":["EN","I"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","I"]
+          },
+          {
+            "sim_type":"TSL",
+            "connection":["ZN","net_0","EN"]
+          }
+        ]
+      },
+
+      {
+        "name": ["TLAT_X1","TLAT_X1_LVT","TLAT_X1_SVT","TLAT_X1_HVT"],
+        "signals": {
+          "input":["D","G","OE"],
+          "output":["Q"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"NOT",
+            "connection":["net_0","OE"]
+          },
+          {
+            "sim_type":"DLAT",
+            "connection":["IQ","","","G","D"]
+          },
+          {
+            "sim_type":"TSL",
+            "connection":["Q","IQ","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["XNOR2_X1","XNOR2_X2","XNOR2_X1_LVT","XNOR2_X2_LVT","XNOR2_X1_SVT","XNOR2_X2_SVT","XNOR2_X1_HVT","XNOR2_X2_HVT"],
+        "signals": {
+          "input":["A","B"],
+          "output":["ZN"],
+          "wire":["net_0"]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"XOR",
+            "connection":["net_0","A","B"]
+          },
+          {
+            "sim_type":"NOT",
+            "connection":["ZN","net_0"]
+          }
+        ]
+      },
+
+      {
+        "name": ["XOR2_X1","XOR2_X2","XOR2_X1_LVT","XOR2_X2_LVT","XOR2_X1_SVT","XOR2_X2_SVT","XOR2_X1_HVT","XOR2_X2_HVT"],
+        "signals": {
+          "input":["A","B"],
+          "output":["Z"],
+          "wire":[]
+        },
+        "sim_primitives":[
+          {
+            "sim_type":"XOR",
+            "connection":["Z","A","B"]
+          }
+        ]
+      }
+    ]
+  }

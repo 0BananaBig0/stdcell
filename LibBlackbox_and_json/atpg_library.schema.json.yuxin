@@ -1,0 +1,113 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "title": "stdcells",
+    "description": "standard cell library schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "std_cells"
+    ],
+    "properties": {
+        "version": {
+            "type": "string",
+            "pattern": "^[0-9]{1,2}.[0-9]$"
+        },
+        "std_cells": {
+            "title": "std cells set",
+            "type": "array",
+            "items": {
+                "title": "single std cell",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "name",
+                    "signals",
+                    "sim_primitives"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "string",
+                            "pattern": "^[A-Z0-9]+$"
+                        }
+                    },
+                    "signals": {
+                        "type": "object",
+                        "required": [
+                            "input",
+                            "output",
+                            "wire"
+                        ],
+                        "properties": {
+                            "input": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "output": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "wire": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "sim_primitives": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "sim_type",
+                                "connection"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "sim_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "XOR",
+                                        "XNOR",
+                                        "AND",
+                                        "NAND",
+                                        "OR",
+                                        "NOR",
+                                        "NOT",
+                                        "BUF",
+                                        "TIE1",
+                                        "TIE0",
+                                        "TIEX",
+                                        "TIEZ",
+                                        "MUX_2",
+                                        "BUSZ",
+                                        "TRI_BUF",
+                                        "TRI_INV",
+                                        "DFF_PRI",
+                                        "DLA_PRI"
+                                    ]
+                                },
+                                "connection": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "maxItems": 5,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

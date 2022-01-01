@@ -1,0 +1,7 @@
+modify atpg_library.schema.json by adding inout information and changing the mathcing pattern of cell name
+modify stdcells_45nm.json by adding inout information
+add multiplite bits requirement to notice.md
+add inout requirement to notice.md
+add BUFZ insertion to notice.md
+add BUSZ insertion to notice.md
+add BUFZ to atpg_library.schema.json

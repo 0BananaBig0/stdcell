@@ -1,0 +1,2067 @@
+{
+    "version": "0.1",
+    "std_cells": [
+        {
+            "name": ["ADDFXL", "ADDFX1", "ADDFX2", "ADDFX4", "ADDFHXL", "ADDFHX1", "ADDFHX2", "ADDFHX4"],
+            "signals": {
+                "input": ["A", "B", "CI"],
+                "output": ["S", "CO"],
+                "wire": ["a_and_b", "a_and_ci", "b_and_ci", "ao_abci", "a_xor_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "OR",
+                    "connection": ["ao_abci", "a_and_ci", "b_and_ci"]
+                },
+                {
+                    "sim_type": "OR",
+                    "connection": ["CO", "a_and_b", "ao_abci"]
+                },
+                {
+                    "sim_type": "AND",
+                    "connection": ["b_and_ci", "B", "CI"]
+                },
+                {
+                    "sim_type": "AND",
+                    "connection": ["a_and_ci", "A", "CI"]
+                },
+                {
+                    "sim_type": "AND",
+                    "connection": ["a_and_b", "A", "B"]
+                },
+                {
+                    "sim_type": "XOR",
+                    "connection": ["a_xor_b", "A", "B"]
+                },
+                {
+                    "sim_type": "XOR",
+                    "connection": ["S", "a_xor_b", "CI"]
+                }
+            ]
+        },
+    
+        {
+            "name": ["ADDHXL", "ADDHX1", "ADDHX2", "ADDHX4"],
+            "signals": {
+                "input": ["A", "B"],
+                "output": ["S", "CO"],
+                "wire": []
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "AND",
+                    "connection": ["CO", "A", "B"]
+                },
+                {
+                    "sim_type": "XOR",
+                    "connection": ["S", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AND2XL", "AND2X1", "AND2X2", "AND2X4"],
+            "signals": {
+                "input": ["A", "B"],
+                "output": ["Y"],
+                "wire": []
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "AND",
+                    "connection": ["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AND3XL", "AND3X1", "AND3X2", "AND3X4"],
+            "signals": {
+                "input": ["A", "B", "C"],
+                "output": ["Y"],
+                "wire": ["a_and_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["a_and_b", "A", "B"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["Y", "a_and_b", "C"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AND4XL", "AND4X1", "AND4X2", "AND4X4"],
+            "signals": {
+                "input": ["A", "B", "C", "D"],
+                "output": ["Y"],
+                "wire": ["a_and_b", "c_and_d"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["a_and_b", "A", "B"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["c_and_d", "C", "D"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["Y", "a_and_b", "c_and_d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI21XL", "AOI21X1", "AOI21X2", "AOI21X4"],
+            "signals": {
+                "input": ["A0", "A1", "B0"],
+                "output": ["Y"],
+                "wire": ["and_a"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "and_a", "B0"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI211XL", "AOI211X1", "AOI211X2", "AOI211X4"],
+            "signals": {
+                "input": ["A0", "A1", "B0", "C0"],
+                "output": ["Y"],
+                "wire": ["and_a", "b0_or_c0"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "OR",
+                    "connection": ["b0_or_c0", "B0", "C0"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "and_a", "b0_or_c0"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI22XL", "AOI22X1", "AOI22X2", "AOI22X4"],
+            "signals": {
+                "input": ["A0", "A1", "B0", "B1"],
+                "output": ["Y"],
+                "wire": ["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "and_a", "and_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI221XL", "AOI221X1", "AOI221X2", "AOI221X4"],
+            "signals": {
+                "input": ["A0", "A1", "B0", "B1", "C0"],
+                "output": ["Y"],
+                "wire": ["and_a", "and_b", "c0_or_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "OR",
+                    "connection": ["c0_or_b", "and_b", "C0"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "and_a", "c0_or_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI222XL", "AOI222X1", "AOI222X2", "AOI222X4"],
+            "signals": {
+                "input": ["A0", "A1", "B0", "B1", "C0", "C1"],
+                "output": ["Y"],
+                "wire": ["and_a", "and_b", "and_c", "c_or_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_c", "C0", "C1"]
+                },
+                 {
+                    "sim_type": "OR",
+                    "connection": ["c_or_b", "and_b", "and_c"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "and_a", "c_or_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI2BB1XL", "AOI2BB1X1", "AOI2BB1X2", "AOI2BB1X4"],
+            "signals": {
+                "input": ["A0N", "A1N", "B0"],
+                "output": ["Y"],
+                "wire": ["nor_a"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["nor_a", "A0N", "A1N"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "nor_a", "B0"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI2BB2XL", "AOI2BB2X1", "AOI2BB2X2", "AOI2BB2X4"],
+            "signals": {
+                "input": ["A0N", "A1N", "B0", "B1"],
+                "output": ["Y"],
+                "wire": ["nor_a", "and_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["nor_a", "A0N", "A1N"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "nor_a", "and_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI31XL", "AOI31X1", "AOI31X2", "AOI31X4"],
+            "signals": {
+                "input": ["A0", "A1", "A2", "B0"],
+                "output": ["Y"],
+                "wire": ["and_a", "a2_and_a"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["a2_and_a", "A2", "and_a"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "a2_and_a", "B0"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI32XL", "AOI32X1", "AOI32X2", "AOI32X4"],
+            "signals": {
+                "input": ["A0", "A1", "A2", "B0", "B1"],
+                "output": ["Y"],
+                "wire": ["and_a", "a2_and_a", "and_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["a2_and_a", "A2", "and_a"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "a2_and_a", "and_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["AOI33XL", "AOI33X1", "AOI33X2", "AOI33X4"],
+            "signals": {
+                "input": ["A0", "A1", "A2", "B0", "B1", "B2"],
+                "output": ["Y"],
+                "wire": ["and_a", "a2_and_a", "and_b", "b2_and_b"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_a", "A0", "A1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["a2_and_a", "A2", "and_a"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["and_b", "B0", "B1"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["b2_and_b", "B2", "and_b"]
+                },
+                 {
+                    "sim_type": "NOR",
+                    "connection": ["Y", "a2_and_a", "b2_and_b"]
+                }
+            ]
+        },
+
+        {
+            "name": ["BUFXL", "BUFX1", "BUFX2", "BUFX3", "BUFX4", "BUFX8", "BUFX12", "BUFX16", "BUFX20"],
+            "signals": {
+                "input": ["A"],
+                "output": ["Y"],
+                "wire": []
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "BUF",
+                    "connection": ["Y", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["CLKBUFXL", "CLKBUFX1", "CLKBUFX2", "CLKBUFX3", "CLKBUFX4", "CLKBUFX8", "CLKBUFX12", "CLKBUFX16", "CLKBUFX20"],
+            "signals": {
+                "input": ["A"],
+                "output": ["Y"],
+                "wire": []
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "BUF",
+                    "connection": ["Y", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["CLKINVXL", "CLKINVX1", "CLKINVX2", "CLKINVX3", "CLKINVX4", "CLKINVX8", "CLKINVX12", "CLKINVX16", "CLKINVX20"],
+            "signals": {
+                "input": ["A"],
+                "output": ["Y"],
+                "wire": []
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["Y", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["JKFFXL", "JKFFX1", "JKFFX2", "JKFFX4"],
+            "signals": {
+                "input": ["J", "K", "CK"],
+                "output": ["Q", "QN"],
+                "wire": ["kn", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "NOT",
+                    "connection": ["kn", "K"]
+                },
+                {
+                    "sim_type": "MUX_2",
+                    "connection": ["d", "QN", "kn", "J"]
+                },
+                {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["JKFFRXL", "JKFFRX1", "JKFFRX2", "JKFFRX4"],
+            "signals": {
+                "input": ["J", "K", "CK", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["kn", "d", "clrbb"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "NOT",
+                    "connection": ["kn", "K"]
+                },
+                {
+                    "sim_type": "MUX_2",
+                    "connection": ["d", "QN", "kn", "J"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["clrbb", "RN"]
+                },
+                {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "clrbb", "CK", "d"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["JKFFSXL", "JKFFSX1", "JKFFSX2", "JKFFSX4"],
+            "signals": {
+                "input": ["J", "K", "CK", "SN"],
+                "output": ["Q", "QN"],
+                "wire": ["kn", "d", "setbb"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "NOT",
+                    "connection": ["kn", "K"]
+                },
+                {
+                    "sim_type": "MUX_2",
+                    "connection": ["d", "QN", "kn", "J"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["setbb", "SN"]
+                },
+                {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "setbb", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["JKFFSRXL", "JKFFSRX1", "JKFFSRX2", "JKFFSRX4"],
+            "signals": {
+                "input": ["J", "K", "CK", "SN", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["kn", "d", "clrbb", "clr", "setbb"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "NOT",
+                    "connection": ["kn", "K"]
+                },
+                {
+                    "sim_type": "MUX_2",
+                    "connection": ["d", "QN", "kn", "J"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["clrbb", "RN"]
+                },
+                {
+                    "sim_type": "AND",
+                    "connection": ["clr", "SN", "clrbb"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["setbb", "SN"]
+                },
+                {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "setbb", "clr", "CK", "d"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFXL", "DFFX1", "DFFX2", "DFFX4"],
+            "signals": {
+                "input": ["D", "CK"],
+                "output": ["Q", "QN"],
+                "wire": []
+            },
+            "sim_primitives": [
+                {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "D"]
+                },
+                {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFHQXL", "DFFHQX1", "DFFHQX2", "DFFHQX4"],
+            "signals": {
+                "input": ["D", "CK"],
+                "output": ["Q"],
+                "wire": []
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFNSRXL", "DFFNSRX1", "DFFNSRX2", "DFFNSRX4"],
+            "signals": {
+                "input": ["D", "CKN", "SN", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["clk", "clr", "set", "s"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clk", "CKN"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clr", "RN"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["set", "SN"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["s", "SN", "clr"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "set", "s", "clk", "D"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFRXL", "DFFRX1", "DFFRX2", "DFFRX4"],
+            "signals": {
+                "input": ["D", "CK", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["clr"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clr", "RN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "clr", "CK", "D"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFRHQXL", "DFFRHQX1", "DFFRHQX2", "DFFRHQX4"],
+            "signals": {
+                "input": ["D", "CK", "RN"],
+                "output": ["Q"],
+                "wire": ["clr"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clr", "RN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "clr", "CK", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFSXL", "DFFSX1", "DFFSX2", "DFFSX4"],
+            "signals": {
+                "input": ["D", "CK", "SN"],
+                "output": ["Q", "QN"],
+                "wire": ["set"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["set", "SN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "set", "1'b0", "CK", "D"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFSHQXL", "DFFSHQX1", "DFFSHQX2", "DFFSHQX4"],
+            "signals": {
+                "input": ["D", "CK", "SN"],
+                "output": ["Q"],
+                "wire": ["set"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["set", "SN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "set", "1'b0", "CK", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFSRXL", "DFFSRX1", "DFFSRX2", "DFFSRX4"],
+            "signals": {
+                "input": ["D", "CK", "SN", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["clr", "set", "s"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clr", "RN"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["set", "SN"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["s", "SN", "clr"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "set", "s", "CK", "D"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFSRHQXL", "DFFSRHQX1", "DFFSRHQX2", "DFFSRHQX4"],
+            "signals": {
+                "input": ["D", "CK", "SN", "RN"],
+                "output": ["Q"],
+                "wire": ["clr", "set", "s"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["clr", "RN"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["set", "SN"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection": ["s", "SN", "clr"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "set", "s", "CK", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DFFTRXL", "DFFTRX1", "DFFTRX2", "DFFTRX4"],
+            "signals": {
+                "input": ["D", "CK", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["s"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "AND",
+                    "connection": ["s", "D", "RN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "s"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["DLY1X1", "DLY2X1", "DLY3X1", "DLY4X1"],
+            "signals": {
+                "input": ["A"],
+                "output": ["Y"],
+                "wire": []
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "BUF",
+                    "connection": ["Y", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["EDFFXL", "EDFFX1", "EDFFX2", "EDFFX4"],
+            "signals": {
+                "input": ["D", "CK", "E"],
+                "output": ["Q", "QN"],
+                "wire": ["d"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "MUX_2",
+                    "connection": ["d", "E", "Q", "D"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["EDFFTRXL", "EDFFTRX1", "EDFFTRX2", "EDFFTRX4"],
+            "signals": {
+                "input": ["D", "CK", "E", "RN"],
+                "output": ["Q", "QN"],
+                "wire": ["s", "d"]
+            },
+            "sim_primitives": [
+                 {
+                    "sim_type": "MUX_2",
+                    "connection": ["s", "E", "Q", "D"]
+                },
+                 {
+                    "sim_type": "AND",
+                    "connection":["d", "s", "RN"]
+                },
+                 {
+                    "sim_type": "DFF_PRI",
+                    "connection": ["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                 {
+                    "sim_type": "NOT",
+                    "connection": ["QN", "Q"]
+                }
+            ]
+        },
+
+
+
+        {
+            "name": ["INVXL", "INVX1", "INVX2", "INVX3", "INVX4", "INVX8", "INVX12", "INVX16", "INVX20"],
+            "signals":{
+                "input":["A"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["Y", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["MX2XL", "MX2X1", "MX2X2", "MX2X4"],
+            "signals":{
+                "input":["A", "B", "S0"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["Y", "S0", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["MX4XL", "MX4X1", "MX4X2", "MX4X4"],
+            "signals":{
+                "input":["A", "B", "C", "D", "S0", "S1"],
+                "output":["Y"],
+                "wire":["n0", "n1"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n0", "S0", "A", "B"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n1", "S0", "C", "D"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["Y", "S1", "n0", "n1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["MXI2XL", "MXI2X1", "MXI2X2", "MXI2X4"],
+            "signals":{
+                "input":["A", "B", "S0"],
+                "output":["Y"],
+                "wire":["n0"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n0", "S0", "A", "B"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["Y", "n0"]
+                }
+            ]
+        },
+
+        {
+            "name": ["MXI4XL", "MXI4X1", "MXI4X2", "MXI4X4"],
+            "signals":{
+                "input":["A", "B", "C", "D", "S0", "S1"],
+                "output":["Y"],
+                "wire":["n0", "n1", "n2"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n0", "S0", "A", "B"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n1", "S0", "C", "D"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["n2", "S1", "n0", "n1"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["Y", "n2"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND2XL", "NAND2X1", "NAND2X2", "NAND2X4"],
+            "signals":{
+                "input":["A", "B"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND2BXL", "NAND2BX1", "NAND2BX2", "NAND2BX4"],
+            "signals":{
+                "input":["AN", "B"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "s", "B"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND3XL", "NAND3X1", "NAND3X2", "NAND3X4"],
+            "signals":{
+                "input":["A", "B", "C"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "A", "B", "C"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND3BXL", "NAND3BX1", "NAND3BX2", "NAND3BX4"],
+            "signals":{
+                "input":["AN", "B", "C"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "s", "B", "C"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND4XL", "NAND4X1", "NAND4X2", "NAND4X4"],
+            "signals":{
+                "input":["A", "B", "C", "D"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "A", "B", "C", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND4BXL", "NAND4BX1", "NAND4BX2", "NAND4BX4"],
+            "signals":{
+                "input":["AN", "B", "C", "D"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "s", "B", "C", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NAND4BBXL", "NAND4BBX1", "NAND4BBX2", "NAND4BBX4"],
+            "signals":{
+                "input":["AN", "BN", "C", "D"],
+                "output":["Y"],
+                "wire":["s", "t"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "s", "t", "C", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["t", "BN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR2XL", "NOR2X1", "NOR2X2", "NOR2X4"],
+            "signals":{
+                "input":["A", "B"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR2BXL", "NOR2BX1", "NOR2BX2", "NOR2BX4"],
+            "signals":{
+                "input":["AN", "B"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "s", "B"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR3XL", "NOR3X1", "NOR3X2", "NOR3X4"],
+            "signals":{
+                "input":["A", "B", "C"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "A", "B", "C"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR3BXL", "NOR3BX1", "NOR3BX2", "NOR3BX4"],
+            "signals":{
+                "input":["AN", "B", "C"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "s", "B", "C"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR4XL", "NOR4X1", "NOR4X2", "NOR4X4"],
+            "signals":{
+                "input":["A", "B", "C", "D"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "A", "B", "C", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR4BXL", "NOR4BX1", "NOR4BX2", "NOR4BX4"],
+            "signals":{
+                "input":["AN", "B", "C", "D"],
+                "output":["Y"],
+                "wire":["s"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "s", "B", "C", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["NOR4BBXL", "NOR4BBX1", "NOR4BBX2", "NOR4BBX4"],
+            "signals":{
+                "input":["AN", "BN", "C", "D"],
+                "output":["Y"],
+                "wire":["s", "t"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOR",
+                    "connection":["Y", "s", "t", "C", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "AN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["t", "BN"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI21XL", "OAI21X1", "OAI21X2", "OAI21X4"],
+            "signals":{
+                "input":["A0", "A1", "B0"],
+                "output":["Y"],
+                "wire":["and_a"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "B0", "and_a"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI211XL", "OAI211X1", "OAI211X2", "OAI211X4"],
+            "signals":{
+                "input":["A0", "A1", "B0", "C0"],
+                "output":["Y"],
+                "wire":["and_a"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "B0", "C0", "and_a"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI22XL", "OAI22X1", "OAI22X2", "OAI22X4"],
+            "signals":{
+                "input":["A0", "A1", "B0", "B1"],
+                "output":["Y"],
+                "wire":["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "and_a", "and_b"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI221XL", "OAI221X1", "OAI221X2", "OAI221X4"],
+            "signals":{
+                "input":["A0", "A1", "B0", "B1", "C0"],
+                "output":["Y"],
+                "wire":["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "C0", "and_a", "and_b"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI222XL", "OAI222X1", "OAI222X2", "OAI222X4"],
+            "signals":{
+                "input":["A0", "A1", "B0", "B1", "C0", "C1"],
+                "output":["Y"],
+                "wire":["and_a", "and_b", "and_c"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "and_a", "and_b", "and_c"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_c", "C0", "C1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI2BB1XL", "OAI2BB1X1", "OAI2BB1X2", "OAI2BB1X4"],
+            "signals":{
+                "input":["A0N", "A1N", "B0"],
+                "output":["Y"],
+                "wire":["and_a"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "B0", "and_a"]
+                },
+                {
+                    "sim_type":"NAND",
+                    "connection":["and_a", "A0N", "A1N"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI2BB2XL", "OAI2BB2X1", "OAI2BB2X2", "OAI2BB2X4"],
+            "signals":{
+                "input":["A0N", "A1N", "B0", "B1"],
+                "output":["Y"],
+                "wire":["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "and_b", "and_a"]
+                },
+                {
+                    "sim_type":"NAND",
+                    "connection":["and_a", "A0N", "A1N"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI31XL", "OAI31X1", "OAI31X2", "OAI31X4"],
+            "signals":{
+                "input":["A0", "A1", "A2", "B0"],
+                "output":["Y"],
+                "wire":["and_a"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "B0", "and_a"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1", "A2"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI32XL", "OAI32X1", "OAI32X2", "OAI32X4"],
+            "signals":{
+                "input":["A0", "A1", "A2", "B0", "B1"],
+                "output":["Y"],
+                "wire":["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "and_b", "and_a"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1", "A2"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OAI33XL", "OAI33X1", "OAI33X2", "OAI33X4"],
+            "signals":{
+                "input":["A0", "A1", "A2", "B0", "B1", "B2"],
+                "output":["Y"],
+                "wire":["and_a", "and_b"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NAND",
+                    "connection":["Y", "and_b", "and_a"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_a", "A0", "A1", "A2"]
+                },
+                {
+                    "sim_type":"OR",
+                    "connection":["and_b", "B0", "B1", "B2"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OR2XL", "OR2X1", "OR2X2", "OR2X4"],
+            "signals":{
+                "input":["A", "B"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"OR",
+                    "connection":["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OR3XL", "OR3X1", "OR3X2", "OR3X4"],
+            "signals":{
+                "input":["A", "B", "C"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"OR",
+                    "connection":["Y", "A", "B", "C"]
+                }
+            ]
+        },
+
+        {
+            "name": ["OR4XL", "OR4X1", "OR4X2", "OR4X4"],
+            "signals":{
+                "input":["A", "B", "C", "D"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"OR",
+                    "connection":["Y", "A", "B", "C", "D"]
+                }
+            ]
+        },
+
+        {
+            "name": ["RSLATNXL", "RSLATNX1", "RSLATNX2", "RSLATNX4"],
+            "signals":{
+                "input":["RN", "SN"],
+                "output":["Q", "QN"],
+                "wire":["r", "s", "set", "reset", "Q0", "Q1"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["r", "RN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["s", "SN"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["set", "s", "RN"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["reset", "r", "SN"]
+                },
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q0", "s", "reset", "1'b0", "1'b0"]
+                },
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q1", "set", "r", "1'b0", "1'b0"]
+                },
+                {
+                    "sim_type":"BUF",
+                    "connection":["Q", "Q0"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q1"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFXL", "SDFFX1", "SDFFX2", "SDFFX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK"],
+                "output":["Q", "QN"],
+                "wire":["d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFHQXL", "SDFFHQX1", "SDFFHQX2", "SDFFHQX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK"],
+                "output":["Q"],
+                "wire":["d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFNSRXL", "SDFFNSRX1", "SDFFNSRX2", "SDFFNSRX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CKN", "SN", "RN"],
+                "output":["Q", "QN"],
+                "wire":["setnn", "clrnn", "clk", "d", "c"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["clk", "CKN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["c", "SN", "clrnn"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "setnn", "c", "clk", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFRXL", "SDFFRX1", "SDFFRX2", "SDFFRX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "RN"],
+                "output":["Q", "QN"],
+                "wire":["clrnn", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "clrnn", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFRHQXL", "SDFFRHQX1", "SDFFRHQX2", "SDFFRHQX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "RN"],
+                "output":["Q"],
+                "wire":["clrnn", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "clrnn", "CK", "d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFSXL", "SDFFSX1", "SDFFSX2", "SDFFSX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "SN"],
+                "output":["Q", "QN"],
+                "wire":["setnn", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "setnn", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFSHQXL", "SDFFSHQX1", "SDFFSHQX2", "SDFFSHQX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "SN"],
+                "output":["Q"],
+                "wire":["setnn", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "setnn", "1'b0", "CK", "d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFSRXL", "SDFFSRX1", "SDFFSRX2", "SDFFSRX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "SN", "RN"],
+                "output":["Q", "QN"],
+                "wire":["clrnn","setnn", "d", "c"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["c", "SN", "clrnn"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "setnn", "c", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFSRHQXL", "SDFFSRHQX1", "SDFFSRHQX2", "SDFFSRHQX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "SN", "RN"],
+                "output":["Q"],
+                "wire":["clrnn","setnn", "d", "c"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "D", "SI"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["c", "SN", "clrnn"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "setnn", "c", "CK", "d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SDFFTRXL", "SDFFTRX1", "SDFFTRX2", "SDFFTRX4"],
+            "signals":{
+                "input":["D", "SI", "SE", "CK", "RN"],
+                "output":["Q", "QN"],
+                "wire":["s", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"AND",
+                    "connection":["s", "D", "RN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "s", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SEDFFXL", "SEDFFX1", "SEDFFX2", "SEDFFX4"],
+            "signals":{
+                "input":["D", "CK", "E", "SE", "SI"],
+                "output":["Q", "QN"],
+                "wire":["d_mux", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d_mux", "E", "Q", "D"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "d_mux", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SEDFFHQXL", "SEDFFHQX1", "SEDFFHQX2", "SEDFFHQX4"],
+            "signals":{
+                "input":["D", "CK", "E", "SE", "SI"],
+                "output":["Q"],
+                "wire":["d_mux", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d_mux", "E", "Q", "D"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "d_mux", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                }
+            ]
+        },
+
+        {
+            "name": ["SEDFFTRXL", "SEDFFTRX1", "SEDFFTRX2", "SEDFFTRX4"],
+            "signals":{
+                "input":["D", "CK", "E", "SE", "SI", "RN"],
+                "output":["Q", "QN"],
+                "wire":["din", "d_mux", "d"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["din", "E", "Q", "D"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["d_mux", "din", "RN"]
+                },
+                {
+                    "sim_type":"MUX_2",
+                    "connection":["d", "SE", "d_mux", "SI"]
+                },
+                {
+                    "sim_type":"DFF_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "CK", "d"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TBUFXL", "TBUFX1", "TBUFX2", "TBUFX3", "TBUFX4", "TBUFX8", "TBUFX12", "TBUFX16", "TBUFX20"],
+            "signals":{
+                "input":["A", "OE"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"TRI_BUF",
+                    "connection":["Y", "OE", "A"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TIEHI"],
+            "signals":{
+                "input":[],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"TIE1",
+                    "connection":["Y"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TIELO"],
+            "signals":{
+                "input":[],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"TIE0",
+                    "connection":["Y"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TLATXL", "TLATX1", "TLATX2", "TLATX4"],
+            "signals":{
+                "input":["D", "G"],
+                "output":["Q", "QN"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "G", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TLATNXL", "TLATNX1", "TLATNX2", "TLATNX4"],
+            "signals":{
+                "input":["D", "GN"],
+                "output":["Q", "QN"],
+                "wire":["clk"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clk", "GN"]
+                },
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q", "1'b0", "1'b0", "clk", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TLATNSRXL", "TLATNSRX1", "TLATNSRX2", "TLATNSRX4"],
+            "signals":{
+                "input":["D", "GN", "RN", "SN"],
+                "output":["Q", "QN"],
+                "wire":["clk", "setnn", "clrnn", "c", "g"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["clk", "GN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["c", "SN", "clrnn"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["g", "clk", "SN", "RN"]
+                },
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q", "setnn", "c", "g", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["TLATSRXL", "TLATSRX1", "TLATSRX2", "TLATSRX4"],
+            "signals":{
+                "input":["D", "G", "RN", "SN"],
+                "output":["Q", "QN"],
+                "wire":["setnn", "clrnn", "c"]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"NOT",
+                    "connection":["setnn", "SN"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["clrnn", "RN"]
+                },
+                {
+                    "sim_type":"AND",
+                    "connection":["c", "SN", "clrnn"]
+                },
+                {
+                    "sim_type":"DLA_PRI",
+                    "connection":["Q", "setnn", "c", "G", "D"]
+                },
+                {
+                    "sim_type":"NOT",
+                    "connection":["QN", "Q"]
+                }
+            ]
+        },
+
+        {
+            "name": ["XNOR2XL", "XNOR2X1", "XNOR2X2", "XNOR2X4"],
+            "signals":{
+                "input":["A", "B"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"XNOR",
+                    "connection":["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["XNOR3X2", "XNOR3X4"],
+            "signals":{
+                "input":["A", "B", "C"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"XNOR",
+                    "connection":["Y", "A", "B", "C"]
+                }
+            ]
+        },
+
+        {
+            "name": ["XOR2XL", "XOR2X1", "XOR2X2", "XOR2X4"],
+            "signals":{
+                "input":["A", "B"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"XOR",
+                    "connection":["Y", "A", "B"]
+                }
+            ]
+        },
+
+        {
+            "name": ["XOR3X2", "XOR3X4"],
+            "signals":{
+                "input":["A", "B", "C"],
+                "output":["Y"],
+                "wire":[]
+            },
+            "sim_primitives": [
+                {
+                    "sim_type":"XOR",
+                    "connection":["Y", "A", "B", "C"]
+                }
+            ]
+        }
+
+    ]
+}
