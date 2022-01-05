@@ -20,6 +20,6 @@ assign x=0 需要绑定TIE0（扁平化时换成LOGIC0_X1(x)即可），assign x
 三态门后面驱动的与门，非门或门(包括BUF）等时，三态门后面需要插入一个BUFZ。
 注意BUS conflict
 
-需要支持-Wno-implicit -Wno-litendian -Od -Wno-assignin --language 1364-2005
+需要支持-Wno-implicit -Wno-litendian -Od -Wno-assignin --language 1364-2005 -v
 
 据我的猜测，verilator识别顶层模块是先查看某个文件是否有某个关键词表示该文件不存在顶层模块，然后数剩余文件中各模块出现的次数，如果只有一个模块只出现过一次，那么该模块就是顶层模块。
