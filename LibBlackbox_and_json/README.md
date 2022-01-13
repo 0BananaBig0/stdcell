@@ -45,7 +45,8 @@ stdcells_45nm\*文件修复了一些bug。
 
 # 玉鑫师兄代码说明
 ## PrimitiveGate
-这个类的作用是用于存储单个primitive gate的信息,但是这个类有一个问题，在存储tie0，tie1这些字符串时，玉鑫师兄也是把它们存储到int容器中的，虽然C/C++会为它们随机产生一个比较庞大而且在当前执行的程序中较为固定的数字，但是难以预测是否会产生BUG。
+这个类的作用是用于存储单个primitive gate的信息,但是这个类有一个问题，在存储tie0，tie1这些字符串时，玉鑫师兄把这两个数绑定到
+整型的极值。
 ## StdCellToPrimitive
 这个类的作用是存储单个stdcell的primitive gate的组成，存储方式是把primitive gate推入PrimitiveGate类型的容器中。
 ## AtpgLibParser
@@ -57,7 +58,7 @@ stdcells_45nm\*文件修复了一些bug。
 享有一个节点，每个primary output会和一个primitive gate共享一个节点，每个wire会和一个primitive gate共享一个节点。
 （2）先存储完单个stdcell的所有primitive gate的predNode的信息，再利用当前节点必为其父节点的子节点的原理存储单个stdcell的所有primitive gate的succNode的信息。
 ## StdCellandIONode
-存储来自read_circuit的verilog文件的单个stdcell或者节点的信息。和PrimitiveGate存在相同的问题，就是tie0和tie1这些字符村是直接存储在int容器中的。
+存储来自read_circuit的verilog文件的单个stdcell或者节点的信息。和PrimitiveGate存在相同的问题，就是tie0和tie1这些字符村是直接和int的极值绑定。
 ### 在存储StdCellandIONode时利用了一个关键点：
 （1）除了Tristate Bus，每个stdcell的输入端口只允许和一个其它stdcell的输出或者一个primary input相连，即每个stdcell的父子点数和其输入端口一致，每个输入端口的父节点数只有一个。但是每个stdcell的子节点个数大于或等于其输出端口个数，因为每个stdcell的输出端口的子节点个数不止一个。
 ## StdCellNetlist
