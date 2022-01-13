@@ -59,7 +59,9 @@ stdcells_45nm\*文件修复了一些bug。
 （2）先存储完单个stdcell的所有primitive gate的predNode的信息，再利用当前节点必为其父节点的子节点的原理存储单个stdcell的所有primitive gate的succNode的信息。
 ## StdCellandIONode
 存储来自read_circuit的verilog文件的单个stdcell或者节点的信息。和PrimitiveGate存在相同的问题，就是tie0和tie1这些字符村是直接和int的极值绑定。
-### 在存储StdCellandIONode时利用了一个关键点：
+### 在存储StdCellandIONode时利用了三个关键点：对```_std2pri,_predId,_predPort```设计的解释
 （1）除了Tristate Bus，每个stdcell的输入端口只允许和一个其它stdcell的输出或者一个primary input相连，即每个stdcell的父子点数和其输入端口一致，每个输入端口的父节点数只有一个。但是每个stdcell的子节点个数大于或等于其输出端口个数，因为每个stdcell的输出端口的子节点个数不止一个。
+（2）有部分stdcells的输出不止一个。需要区分父节点stdcell哪一个输出是当前节点的stdcell的输入。
+（3）每一个在stdcell netlist中的stdcell（snode）都包含了其primitive gate在primitive netlist中的位置，而每一个primitive gate仅有一个输出。
 ## StdCellNetlist
 存才来自read_circuit的verilog文件的flatten stdcell netlist。把该文件中的每一个stdcell node压入一个StdCEllandIONode类型的容器中。
