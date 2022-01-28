@@ -65,3 +65,7 @@ stdcells_45nm\*文件修复了一些bug。
 （3）每一个在stdcell netlist中的stdcell（snode）都包含了其primitive gate在primitive netlist中的位置，而每一个primitive gate仅有一个输出。
 ## StdCellNetlist
 存才来自read_circuit的verilog文件的flatten stdcell netlist。把该文件中的每一个stdcell node压入一个StdCEllandIONode类型的容器中。
+
+# 在stdcell是空白或者没出现或没定义的模块的处理
+tessant会把它们作为黑盒子处理，相关信号处理为未知信号。\
+我们需要把相关信息报出来，不用作特殊处理。
